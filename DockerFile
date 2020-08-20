@@ -1,0 +1,16 @@
+FROM python:3.7-slim
+
+# RUN adduser -D dockerProject
+
+WORKDIR C:\Users\jainam\Desktop\dockerProject
+
+COPY requirements.txt requirements.txt
+# RUN pip3.8 install uvloop
+RUN pip install -r requirements.txt
+
+COPY api.py ./
+
+# RUN chown -R dockerProject:dockerProject ./
+# USER dockerProject
+
+CMD uvicorn api:app --host 0.0.0.0 --port 5057
